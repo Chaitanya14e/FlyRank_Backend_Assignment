@@ -1,43 +1,37 @@
-# Task API
+# Task API - FastAPI + SQLite
 
-A simple CRUD API built using FastAPI.
+A simple CRUD Task API built using FastAPI and SQLite.
 
-## Installation
+## Technologies
 
-pip install -r requirements.txt
+- Python
+- FastAPI
+- SQLite
+- Uvicorn
 
-## Run
+## Features
 
-uvicorn main:app --reload
+- Create tasks
+- Read all tasks
+- Read a task by ID
+- Update tasks
+- Delete tasks
+- SQLite database persistence
+- Parameterized SQL queries
+- Automatic database and table creation
 
-## Endpoints
+## Why SQLite?
 
-| Method | Endpoint |
-|--------|----------|
-| GET | / |
-| GET | /health |
-| GET | /tasks |
-| GET | /tasks/{id} |
-| POST | /tasks |
-| PUT | /tasks/{id} |
-| DELETE | /tasks/{id} |
+SQLite was chosen because it is lightweight and requires no separate
+database server.
 
-## Sample curl Output
+The database is stored in a single file called `tasks.db`.
 
-```bash
-curl -i http://127.0.0.1:8000/tasks
-```
-Output:
-```
-HTTP/1.1 200 OK
-date: Sat, 18 Jul 2026 05:35:57 GMT
-server: uvicorn
-content-length: 158
-content-type: application/json
+It also allows task data to survive when the FastAPI server is restarted.
 
-{"data":[{"id":1,"title":"Learning FastAPI","done":true},{"id":2,"title":"Doing Leetcode problems","done":true},{"id":3,"title":"Notes Making","done":false}]}(venv) 
-```
+## Database
 
-## Swagger UI Screenshot
+The database file is:
 
-![Swagger UI](screenshots/swagger.png)
+```text
+tasks.db
