@@ -1,37 +1,33 @@
-# Task API - FastAPI + SQLite
+# Task API - PostgreSQL + Docker
 
-A simple CRUD Task API built using FastAPI and SQLite.
+A FastAPI Task API connected to PostgreSQL using Docker Compose.
 
-## Technologies
+## Why PostgreSQL?
 
-- Python
-- FastAPI
-- SQLite
-- Uvicorn
+PostgreSQL is used as the persistent database instead of the previous
+in-memory/SQLite storage. This allows task data to survive application
+and container restarts.
 
-## Features
+## Architecture
 
-- Create tasks
-- Read all tasks
-- Read a task by ID
-- Update tasks
-- Delete tasks
-- SQLite database persistence
-- Parameterized SQL queries
-- Automatic database and table creation
+Routes → Service → PostgreSQL Repository → PostgreSQL
 
-## Why SQLite?
+The service and API routes remain independent of the database implementation.
+The PostgreSQL repository implements the existing TaskRepository interface.
 
-SQLite was chosen because it is lightweight and requires no separate
-database server.
+## Environment Variables
 
-The database is stored in a single file called `tasks.db`.
+Database configuration is stored in `.env`.
 
-It also allows task data to survive when the FastAPI server is restarted.
+The `.env` file is ignored by Git.
 
-## Database
+Use `.env.example` as a template.
 
-The database file is:
+## Running the Application
 
-```text
-tasks.db
+Make sure Docker Desktop is running.
+
+Start the complete application with:
+
+```bash
+docker compose up --build
